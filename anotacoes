@@ -1,0 +1,28 @@
+1) Criada aplicacao com spring initilizer.
+
+2) Testei o endpoint no postman. tudo ok.
+
+3) Adicionei a dependencia do spring security:
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		
+		O get ta ok, mas o post deu "nao autorizado"
+		
+4) Criou a classe WebSecurityConfig, que extende um adapter.
+		
+********** @EnableWebSecutiry ***************
+
+Esta anotacao usada na classe WebSecurityConfig desliga as configuracoes 
+de segurança padrão do spring security.
+
+*********************************************
+* O ultimo metodo do metodo "configure", o "permitAll" diz que todos os endpoints poderão
+ser acessados.
+
+* O ultimo metodo do metodo "configure", o "authenticated" diz que todos os endpoints
+só poderão ser acessados por usuarios autenticados.
+
+5) Requisicoes POST, PUT e DELETE são bloqueadas por padrão do spring security por causa
+da protecao CSRF. Para desabilita-la, tem de adicionar o método .csrf().disable();
