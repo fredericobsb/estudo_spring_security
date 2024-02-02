@@ -33,3 +33,15 @@ da protecao CSRF. Para desabilita-la, tem de adicionar o método .csrf().disable
     "There is no PasswordEncoder mapped for the id "null"
     
     esse erro é porque tem que passar um encoder para a senha.
+    
+7) Criada a estrutura em banco de dados para cadastrar um usuario.
+
+    * Inseridos usuarios no banco manualmente, com o SQL:
+    Site gerador de UUID: https://www.uuidgenerator.net/
+    
+    insert into tb_user values('UUID','SENHA CRIPTOGRAFADA PELO SPRING SECURITY','Florisvaldo');
+    
+8) Criada uma nova classe de configuracao: UserDetailsServiceImpl e feitas alteracoes para
+autenticar com dados do usuario em banco de dados, e não mais em banco em memória. 
+
+
