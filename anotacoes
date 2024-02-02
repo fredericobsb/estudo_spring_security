@@ -26,3 +26,10 @@ só poderão ser acessados por usuarios autenticados.
 
 5) Requisicoes POST, PUT e DELETE são bloqueadas por padrão do spring security por causa
 da protecao CSRF. Para desabilita-la, tem de adicionar o método .csrf().disable();
+
+6) Adicionou autenticacao em memoria com usuario e senha, setou aba do postman para "Basic Auth".
+   Mas ao enviar requisicao, deu o erro:
+   
+    "There is no PasswordEncoder mapped for the id "null"
+    
+    esse erro é porque tem que passar um encoder para a senha.
