@@ -39,9 +39,25 @@ da protecao CSRF. Para desabilita-la, tem de adicionar o método .csrf().disable
     * Inseridos usuarios no banco manualmente, com o SQL:
     Site gerador de UUID: https://www.uuidgenerator.net/
     
-    insert into tb_user values('UUID','SENHA CRIPTOGRAFADA PELO SPRING SECURITY','Florisvaldo');
+    into tb_user values(1,'$2a$10$f5M6GsPfoDEveqw8XsuH8.rm.mjwKQY3Q23ZRg46BXfdgIXXQPhDy','Florisvaldo');
+
+	insert into tb_user values(2,'$2a$10$f5M6GsPfoDEveqw8XsuH8.rm.mjwKQY3Q23ZRg46BXfdgIXXQPhDy','Maria');
+
+	insert into tb_user values(3,'$2a$10$f5M6GsPfoDEveqw8XsuH8.rm.mjwKQY3Q23ZRg46BXfdgIXXQPhDy','João');
     
 8) Criada uma nova classe de configuracao: UserDetailsServiceImpl e feitas alteracoes para
 autenticar com dados do usuario em banco de dados, e não mais em banco em memória. 
 
+9) Criadas as entidades de Roles (controle de nivel de acesso), e inserido os roles no banco
+com o seguinte comando sql:
+           insert into tb_role values(1, 'ROLE_ADMIN');
+           insert into tb_role values(2, 'ROLE_USER');
+              * UUID aleatorio gerado em https://www.uuidgenerator.net/.
 
+10) Criadas as relacoes dos usuarios com os respectivos roles:
+
+insert into tb_users_roles values(1,1); //florisvaldo user
+insert into tb_users_roles values(2,1); //Maria user
+insert into tb_users_roles values(3,2);  //Joao admin
+
+Acessado os endpoints, mas deu erro porque nao carregou as roles dos usuarios(Persistent bag vazio).

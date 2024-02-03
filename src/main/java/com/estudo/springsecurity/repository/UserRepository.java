@@ -8,7 +8,7 @@ import java.util.UUID;
 import com.estudo.springsecurity.model.UserModel;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserModel, UUID>{
+public interface UserRepository extends JpaRepository<UserModel, Long>{
 
 	Optional<UserModel>findByUsername(String username);
 }
