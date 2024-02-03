@@ -3,12 +3,14 @@ package com.estudo.springsecurity.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableGlobalMethodSecurity(prePostEnabled=true)
 public class WebSecurityConfigV2 {
 	
 	@Bean
@@ -17,9 +19,9 @@ public class WebSecurityConfigV2 {
 		.httpBasic()
 		.and()
 		.authorizeHttpRequests()
-		.antMatchers(HttpMethod.GET, "/api/v1/teste/**").permitAll() //qualquer usuario acessa metodos GET
-		.antMatchers(HttpMethod.POST, "/api/v1/teste").hasRole("USER")//somente usuarios com perfil USER fazem POST
-		.antMatchers(HttpMethod.DELETE, "/api/v1/teste/**").hasRole("ADMIN")//somente usuarios com perfil ADMIN fazem DELETE.
+		//.antMatchers(HttpMethod.GET, "/api/v1/teste/**").permitAll() //qualquer usuario acessa metodos GET
+		//.antMatchers(HttpMethod.POST, "/api/v1/teste").hasRole("USER")//somente usuarios com perfil USER fazem POST
+		//.antMatchers(HttpMethod.DELETE, "/api/v1/teste/**").hasRole("ADMIN")//somente usuarios com perfil ADMIN fazem DELETE.
 		/*.permitAll() ==> usado alternadamente com .authenticated, 
 		 *      permiteAll deixa acessar todos endpoints.
 		*/
