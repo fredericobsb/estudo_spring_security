@@ -3,6 +3,7 @@ package com.estudo.springsecurity.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -30,12 +31,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.httpBasic()
 			.and()
 			.authorizeHttpRequests()
-			.anyRequest()
+			.antMatchers(HttpMethod.GET, "/api/v1/teste/**").permitAll() //qualquer usuario acessa metodos GET
+			.antMatchers(HttpMethod.POST, "/api/v1/teste").hasRole("USER")//somente usuarios com perfil USER fazem POST
+			.antMatchers(HttpMethod.DELETE, "/api/v1/teste/**").hasRole("ADMIN")//somente usuarios com perfil ADMIN fazem DELETE.
 			/*.permitAll() ==> usado alternadamente com .authenticated, 
 			 *      permiteAll deixa acessar todos endpoints.
 			*/
 			/*.authenticated() ==> permite acesso aos endpoints somente de usuarios autenticados.*/
-			.authenticated()
+			.anyRequest().authenticated()
 			.and()
 			.csrf().disable();
 		    /* Veja que mesmo sem passar autenticacao no postman, a requisicao POST deu certo

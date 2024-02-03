@@ -1,5 +1,6 @@
 package com.estudo.springsecurity.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,5 +23,10 @@ public class SegurancaController {
 	@GetMapping
 	public String recuperadorDto() {
 		return " ===> @GetMapping recuperadorDto()";
+	}
+	
+	@DeleteMapping
+	public String deletadorDeDto() {
+		return " ===> @DeleteMapping deletarDeDto()";
 	}
 }

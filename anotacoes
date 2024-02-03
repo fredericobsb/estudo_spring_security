@@ -60,4 +60,9 @@ insert into tb_users_roles values(1,1); //florisvaldo user
 insert into tb_users_roles values(2,1); //Maria user
 insert into tb_users_roles values(3,2);  //Joao admin
 
-Acessado os endpoints, mas deu erro porque nao carregou as roles dos usuarios(Persistent bag vazio).
+	Acessado os endpoints, mas deu erro porque nao carregou as roles dos usuarios(Persistent bag vazio).
+    -> Coloque @Transactional a nivel de classe em UserDetailsServiceImpl que vai carregar as roles.
+    
+11) Atribuindo restricoes: quais usuarios podem acessar quais recursos.
+
+12) A partir da versão 5.7 do Spring Security, o recomendado é usar componentes. 
